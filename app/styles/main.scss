@@ -1,0 +1,121 @@
+// bower:scss
+// endbower
+
+body {
+    background:grey;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:auto;
+}
+
+
+.streetfighter {
+    margin: 50px auto 0 auto;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 60px;
+}
+
+
+h1 {    
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+    }
+
+.menu {
+    display: none;
+ 
+    &.active {
+        display: block;
+    }
+}
+
+
+.Ryu-Button{
+    background-image: url(http://fc07.deviantart.net/fs46/f/2009/218/d/e/Marvel_VS_Capcom_2__Ryu_by_UdonCrew.jpg);
+    background-size:cover;
+    padding:40px 60px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    height:200px;
+    width:200px;
+    border-radius: 25%;
+
+
+    &:hover{
+        cursor:pointer;
+
+    }
+}
+.Chunli-Button{
+    background-image: url(http://fc02.deviantart.net/fs25/f/2008/143/4/7/Character_Select__Chun_Li_by_UdonCrew.jpg);
+    padding:60px 60px;
+    margin-top: 20px;
+    text-align: center;
+    font-weight:bold;
+    font-size: 30px;
+    height:200px;
+    width:200px;
+    border-radius: 25%;
+    background-size:cover;
+
+
+    &:hover{
+        cursor:pointer;
+    }
+}
+
+
+.Ken-Button{
+     background-image: url(http://img2.wikia.nocookie.net/__cb20091113005505/streetfighter/images/c/c6/Character_Select_Ken_by_UdonCrew.jpg);
+    padding:60px 60px;
+    margin-top: 20px;
+    text-align: center;
+    font-weight:bold;
+    font-size: 30px;
+    height:200px;
+    width:200px;
+    border-radius: 25%;
+    background-size:cover;
+
+
+    &:hover{
+        cursor:pointer;
+    }
+}
+
+.button {
+    padding: 20px 60px;
+    height: 40px;
+    color: white;
+    background:red;
+    border-radius: 8px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bolder;
+    margin-top: 20px;
+ 
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.game-over{
+    display: none;
+    position: absolute;
+    margin:0px;
+    background-color:auto;
+    color:red;
+
+    &.active{
+        display:block;
+    }
+
+
+}
