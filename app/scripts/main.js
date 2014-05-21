@@ -1,33 +1,32 @@
 function Ryu () {
 	this.hp = 40;
 
-	this.primaryAttack = function(opponent) {
-		opponent.hp = opponent.hp - 5;
+	this.primaryAttack = function(Akuma) {
+		Akuma.hp = Akuma.hp - 5;
 	}
 }
 
-	this.comboAttack = function(opponent) {
-		if (opponent.drops === true) {
+	this.comboAttack = function(Akuma) {
+		if (Akuma.drops === true) {
 			this.hp =0;
 		} else {
-			opponent.hp = opponent.hp - 20;
+			Akuma.hp = Akuma.hp - 20;
 		}
 	}
 
 
-function Opponent() {
+function Akuma() {
 	this.hp = 40;
 
-	this.primaryAttack = function(opponent) {
-    	opponent.hp = opponent.hp - (10 + 2);
+	this.primaryAttack = function(Akuma) {
+    	Akuma.hp = Akuma.hp - (10 + 2);
   	}
  
-	this.comboAttack = function(opponent) {
-    	opponent.hp = opponent.hp - 10;
+	this.comboAttack = function(Akuma) {
+    	Akuma.hp = Akuma.hp - 10;
     	this.hp = this.hp + 5;
   	}
 }
-
 
 
 function Fighter(){
@@ -39,10 +38,10 @@ function Fighter(){
 
 	this.comboAttack = function(fighter) {
     	fighter.hp = fighter.hp - 10;
-    	this.hp = this.hp + 10;
+    	this.hp = this.hp + 20;
 }
 
-}
+};
 
 function renderFighter(fighter) {
 	if (fighter.hp < 1){
@@ -53,11 +52,11 @@ function renderFighter(fighter) {
 }
 
 
-function renderOpponent(opponent) {
-	if (opponent.hp < 1){
+function renderAkuma(Akuma) {
+	if (Akuma.hp < 1){
 		gameOver();
 	} else {
-		$('.opponent-stats').text('opponent has ' + opponent.hp + 'hp');
+		$('.Akuma-stats').text('Akuma has ' + Akuma.hp + 'hp');
 	}
 }
 
@@ -65,7 +64,7 @@ function renderOpponent(opponent) {
 
 $('.Ryu-Button').click(function() {
   	fighter = new Ryu();
-  	opponent = new Opponent();
+  	Akuma = new Akuma();
 
   	$('.Ken-Button').remove();
   	$('.Chunli-Button').remove();
@@ -74,144 +73,232 @@ $('.Ryu-Button').click(function() {
   	$('.Akuma').addClass('active');
  
  	renderFighter(fighter);
- 	renderOpponent(opponent);
+ 	renderAkuma(Akuma);
 
 });
 
 $('.primaryAttack').click(function() {
-	fighter.primaryAttack(opponent);
+	fighter.primaryAttack(Akuma);
 	$(".action").text("shoryuken!");
 
 	renderFighter(fighter);
-	renderOpponent(opponent)
+	renderAkuma(Akuma);
 
-	opponentAttack(fighter);
+	AkumaAttack(fighter);
 });
 
 $('.comboAttack').click(function() {
-	fighter.comboAttack(opponent)
+	fighter.comboAttack(Akuma);
 	$(".action").text("Down forward punch!");
 
 	renderFighter(fighter);
-	renderOpponent(opponent);
+	renderAkuma(Akuma);
 
-	opponentAttack(fighter);
+	AkumaAttack(fighter);
 });
 
 
-function opponentAttack () {
+function AkumaAttack () {
 	setTimeout(function(){
     	if (Math.floor(Math.random() * 10 ) > 4){
-    		opponent.comboAttack(fighter);  
+    		Akuma.comboAttack(fighter);  
     		$('.action').text('KO!');
     	} else {
-     		opponent.primaryAttack(fighter);
-      			$('.action').text('Enemy attack!');
+     	Akuma.primaryAttack(fighter)
+      	$('.action').text('Enemy attack!');
 		}
 
     renderFighter(fighter);
-    renderOpponent(opponent);
+    renderAkuma(Akuma);
  
-},3000);
+},1000);
 }
 
-
-
-
 function Chunli () {
-	this.hp = 60;
+	this.hp = 40;
 
-	this.primaryAttack = function(opponent) {
-		opponent.hp = opponent.hp - 5;
+	this.primaryAttack = function(Dudley) {
+		Dudley.hp = Dudley.hp - 5;
 	}
 }
 
-	this.comboAttack = function(opponent) {
-		if (opponent.drops === true) {
+	this.comboAttack = function(Dudley) {
+		if (Dudley.drops === true) {
 			this.hp =0;
 		} else {
-			opponent.hp = opponent.hp - 40;
+			Dudley.hp = Dudley.hp - 20;
 		}
 	}
 
 
+function Dudley() {
+	this.hp = 40;
+
+	this.primaryAttack = function(Dudley) {
+    	Dudley.hp = Dudley.hp - (10 + 2);
+  	}
+ 
+	this.comboAttack = function(Dudley) {
+    	Dudley.hp = Dudley.hp - 10;
+    	this.hp = this.hp + 5;
+  	}
+}
+
+
+function renderDudley(Dudley) {
+	if (Dudley.hp < 1){
+		gameOver();
+	} else {
+		$('.Dudley-stats').text('Dudley has ' + Dudley.hp + 'hp');
+	}
+}
 
 
 
 $('.Chunli-Button').click(function() {
   	fighter = new Chunli();
-  	opponent = new Opponent();
+  	Dudley = new Dudley();
 
-  	$('.Ryu-Button').remove();
   	$('.Ken-Button').remove();
+  	$('.Ryu-Button').remove();
  
   	$('.menu').addClass('active');
   	$('.Dudley').addClass('active');
-
  
- 	renderFighter(figher);
- 	renderOpponent(opponent);
+ 	renderFighter(fighter);
+ 	renderDudley(Dudley);
 
 });
 
+$('.primaryAttack').click(function() {
+	fighter.primaryAttack(Dudley);
+	$(".action").text("Hadduken!");
+
+	renderFighter(fighter);
+	renderDudley(Dudley);
+
+	DudleyAttack(fighter);
+});
+
+$('.comboAttack').click(function() {
+	fighter.comboAttack(Dudley);
+	$(".action").text("super!,Chunli wins!");
+
+	renderFighter(fighter);
+	renderDudley(Dudley);
+
+	DudleyAttack(fighter);
+});
 
 
-
-/*Could not figure out how to give each individual 
-character their own skils without the hp being undefined*/
-
-/*function Chunli () {
+function DudleyAttack () {
 	setTimeout(function(){
     	if (Math.floor(Math.random() * 10 ) > 4){
-    		Dudley.comboAttack(Chunli);  
-    		$('.action').text('spinning bird kick');
+    		Dudley.comboAttack(fighter) 
+    		$('.action').text('KO');
     	} else {
-     		Dudley.primaryAttack(Chunli);
-      			$('.action').text('corkscrew blow');
+     		Dudley.primaryAttack(fighter);
+      			$('.action').text('Lightning-Kick!');
 		}
 
-    renderChunli(chunli);
+    renderFighter(fighter);
     renderDudley(Dudley);
  
-},2000);*/
+},1000);
+}
 
-
-function Ken () {
+function Ken() {
 	this.hp = 40;
 
-	this.primaryAttack = function(opponent) {
-		opponent.hp = opponent.hp - 5;
+	this.primaryAttack = function(Oro) {
+		Oro.hp = Oro.hp - 5;
 	}
 }
 
-	this.comboAttack = function(opponent) {
-		if (opponent.drops === true) {
+	this.comboAttack = function(Oro) {
+		if (Oro.drops === true) {
 			this.hp =0;
 		} else {
-			opponent.hp = opponent.hp - 20;
+			Oro.hp = Oro.hp - 20;
 		}
 	}
 
-$('.Ken-Button').click(function() {
-  	fighter = new Chunli();
-  	opponent = new Opponent();
 
-  	$('.Ryu-Button').remove();
+function Oro() {
+	this.hp = 40;
+
+	this.primaryAttack = function(Oro) {
+    	Oro.hp = Oro.hp - (10 + 2);
+  	}
+ 
+	this.comboAttack = function(Oro) {
+    	Oro.hp = Oro.hp - 10;
+    	this.hp = this.hp + 5;
+  	}
+}
+
+
+function renderOro(Oro) {
+	if (Oro.hp < 1){
+		gameOver();
+	} else {
+		$('.Oro-stats').text('Oro has ' + Oro.hp + 'hp');
+	}
+}
+
+
+
+$('.Ken-Button').click(function() {
+  	fighter = new Ken();
+  	Oro = new Oro();
+
   	$('.Chunli-Button').remove();
+  	$('.Ryu-Button').remove();
  
   	$('.menu').addClass('active');
   	$('.Oro').addClass('active');
-
  
  	renderFighter(fighter);
- 	renderOpponent(opponent);
+ 	renderOro(Oro);
 
 });
 
+$('.primaryAttack').click(function() {
+	fighter.primaryAttack(Oro);
+	$(".action").text("shoryuken!");
+
+	renderFighter(fighter);
+	renderDudley(Dudley)
+
+	OroAttack(fighter);
+});
+
+$('.comboAttack').click(function() {
+	fighter.comboAttack(Oro)
+	$(".action").text("Down-forward-Punch,Oro-Winner!");
+
+	renderFighter(fighter);
+	renderOro(Oro);
+
+	OroAttack(fighter);
+});
 
 
+function OroAttack () {
+	setTimeout(function(){
+    	if (Math.floor(Math.random() * 5 ) > 4){
+    		Oro.comboAttack(fighter);  
+    		$('.action').text('tengustones!');
+    	} else {
+     		Oro.primaryAttack(fighter);
+      			$('.action').text('EnergyOrb!');
+		}
 
-
+    renderFighter(fighter);
+    renderOro(Oro);
+ 
+},1000);
+}
 
 
 function gameOver(){
